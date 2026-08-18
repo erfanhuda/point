@@ -1,0 +1,114 @@
+{
+  "tabs": {
+    "items": "Items",
+    "sales": "Sales",
+    "settings": "Settings"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "save": "Save",
+    "add": "Add",
+    "none": "None",
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "tax": "Tax",
+    "total": "Total",
+    "date": "Date",
+    "quantity": "Quantity",
+    "note": "Note"
+  },
+  "items": {
+    "navigationTitle": "Items",
+    "searchPrompt": "Search items",
+    "emptyTitle": "No Items Yet",
+    "emptySubtitle": "Tap + to add your first item.",
+    "stockPrefix": "Stock",
+    "addItemTooltip": "Add Item"
+  },
+  "itemForm": {
+    "newTitle": "New Item",
+    "editTitle": "Edit Item",
+    "photoSection": "Photo",
+    "choosePhoto": "Choose Photo",
+    "removePhoto": "Remove Photo",
+    "detailsSection": "Details",
+    "codeLabel": "Code",
+    "namePlaceholder": "Item name",
+    "descriptionPlaceholder": "Description",
+    "sellPriceLabel": "Sell price",
+    "variantsSection": "Variants",
+    "variantsFooter": "A variant can have its own add-on price, link to another item profile, or both.",
+    "addVariant": "Add Variant",
+    "variantNamePlaceholder": "Variant name",
+    "addOnPriceLabel": "Add-on price",
+    "linkedItemLabel": "Linked item"
+  },
+  "itemDetail": {
+    "currentStockLabel": "Current Stock",
+    "variantsSection": "Variants",
+    "stockCardSection": "Stock Card",
+    "noMovementsText": "No stock movements yet.",
+    "editItemAction": "Edit Item",
+    "moreOptionsTooltip": "More Options",
+    "balancePrefix": "Balance"
+  },
+  "stock": {
+    "itemLabel": "Item",
+    "currentStockLabel": "Current Stock",
+    "movementSection": "Movement",
+    "typeLabel": "Type",
+    "notePlaceholder": "Note",
+    "quantityToAdd": "Quantity to add",
+    "adjustmentQuantity": "Adjustment (use - to reduce)",
+    "opnameQuantity": "Physical counted quantity",
+    "stockOutQuantity": "Quantity",
+    "stockInName": "Stock In",
+    "stockOutName": "Stock Out",
+    "correctionName": "Correction",
+    "opnameName": "Stock Opname"
+  },
+  "sales": {
+    "navigationTitle": "Sales",
+    "emptyTitle": "No Sales Yet",
+    "emptySubtitle": "Tap + to record a sell transaction.",
+    "itemsCountSuffix": "item(s)",
+    "addSaleTooltip": "New Sale",
+    "newSaleTitle": "New Sale",
+    "transactionDateSection": "Transaction Date",
+    "itemsSection": "Items",
+    "addItem": "Add Item",
+    "discountTaxSection": "Discount & Tax",
+    "applyTax": "Apply Tax",
+    "taxRateLabel": "Tax rate (%)",
+    "summarySection": "Summary",
+    "soldInTransactionNote": "Sold in transaction"
+  },
+  "addOrderLine": {
+    "navigationTitle": "Add Item",
+    "itemSection": "Item",
+    "selectItemPlaceholder": "Select an item",
+    "variantSection": "Variant",
+    "inStockLabel": "In Stock",
+    "unitPriceLabel": "Unit price",
+    "searchPrompt": "Search items",
+    "addAction": "Add"
+  },
+  "transactionDetail": {
+    "navigationTitle": "Sale Details",
+    "detailsSection": "Details",
+    "itemsSection": "Items",
+    "summarySection": "Summary"
+  },
+  "settings": {
+    "navigationTitle": "Settings",
+    "languageSection": "Language",
+    "languageFooter": "Choose the language used throughout the app."
+  },
+  "errors": {
+    "itemNameAndPrice": "Enter a name and a valid sell price.",
+    "quantityWholeNumber": "Enter a whole number quantity.",
+    "stockInPositive": "Stock in quantity must be positive.",
+    "noStockChange": "That doesn't change the current stock.",
+    "emptyOrder": "Add at least one item to the order."
+  }
+}

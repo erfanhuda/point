@@ -1,0 +1,114 @@
+{
+  "tabs": {
+    "items": "Barang",
+    "sales": "Penjualan",
+    "settings": "Pengaturan"
+  },
+  "common": {
+    "cancel": "Batal",
+    "save": "Simpan",
+    "add": "Tambah",
+    "none": "Tidak Ada",
+    "subtotal": "Subtotal",
+    "discount": "Diskon",
+    "tax": "Pajak",
+    "total": "Total",
+    "date": "Tanggal",
+    "quantity": "Jumlah",
+    "note": "Catatan"
+  },
+  "items": {
+    "navigationTitle": "Barang",
+    "searchPrompt": "Cari barang",
+    "emptyTitle": "Belum Ada Barang",
+    "emptySubtitle": "Ketuk + untuk menambahkan barang pertama Anda.",
+    "stockPrefix": "Stok",
+    "addItemTooltip": "Tambah Barang"
+  },
+  "itemForm": {
+    "newTitle": "Barang Baru",
+    "editTitle": "Ubah Barang",
+    "photoSection": "Foto",
+    "choosePhoto": "Pilih Foto",
+    "removePhoto": "Hapus Foto",
+    "detailsSection": "Detail",
+    "codeLabel": "Kode",
+    "namePlaceholder": "Nama barang",
+    "descriptionPlaceholder": "Deskripsi",
+    "sellPriceLabel": "Harga jual",
+    "variantsSection": "Varian",
+    "variantsFooter": "Varian dapat memiliki harga tambahan sendiri, terhubung ke profil barang lain, atau keduanya.",
+    "addVariant": "Tambah Varian",
+    "variantNamePlaceholder": "Nama varian",
+    "addOnPriceLabel": "Harga tambahan",
+    "linkedItemLabel": "Barang terhubung"
+  },
+  "itemDetail": {
+    "currentStockLabel": "Stok Saat Ini",
+    "variantsSection": "Varian",
+    "stockCardSection": "Kartu Stok",
+    "noMovementsText": "Belum ada pergerakan stok.",
+    "editItemAction": "Ubah Barang",
+    "moreOptionsTooltip": "Opsi Lainnya",
+    "balancePrefix": "Saldo"
+  },
+  "stock": {
+    "itemLabel": "Barang",
+    "currentStockLabel": "Stok Saat Ini",
+    "movementSection": "Pergerakan",
+    "typeLabel": "Jenis",
+    "notePlaceholder": "Catatan",
+    "quantityToAdd": "Jumlah yang ditambahkan",
+    "adjustmentQuantity": "Penyesuaian (gunakan - untuk mengurangi)",
+    "opnameQuantity": "Jumlah hasil hitung fisik",
+    "stockOutQuantity": "Jumlah",
+    "stockInName": "Stok Masuk",
+    "stockOutName": "Stok Keluar",
+    "correctionName": "Koreksi",
+    "opnameName": "Stok Opname"
+  },
+  "sales": {
+    "navigationTitle": "Penjualan",
+    "emptyTitle": "Belum Ada Penjualan",
+    "emptySubtitle": "Ketuk + untuk mencatat transaksi penjualan.",
+    "itemsCountSuffix": "barang",
+    "addSaleTooltip": "Penjualan Baru",
+    "newSaleTitle": "Penjualan Baru",
+    "transactionDateSection": "Tanggal Transaksi",
+    "itemsSection": "Barang",
+    "addItem": "Tambah Barang",
+    "discountTaxSection": "Diskon & Pajak",
+    "applyTax": "Terapkan Pajak",
+    "taxRateLabel": "Tarif pajak (%)",
+    "summarySection": "Ringkasan",
+    "soldInTransactionNote": "Terjual dalam transaksi"
+  },
+  "addOrderLine": {
+    "navigationTitle": "Tambah Barang",
+    "itemSection": "Barang",
+    "selectItemPlaceholder": "Pilih barang",
+    "variantSection": "Varian",
+    "inStockLabel": "Stok Tersedia",
+    "unitPriceLabel": "Harga satuan",
+    "searchPrompt": "Cari barang",
+    "addAction": "Tambah"
+  },
+  "transactionDetail": {
+    "navigationTitle": "Detail Penjualan",
+    "detailsSection": "Detail",
+    "itemsSection": "Barang",
+    "summarySection": "Ringkasan"
+  },
+  "settings": {
+    "navigationTitle": "Pengaturan",
+    "languageSection": "Bahasa",
+    "languageFooter": "Pilih bahasa yang digunakan di seluruh aplikasi."
+  },
+  "errors": {
+    "itemNameAndPrice": "Masukkan nama dan harga jual yang valid.",
+    "quantityWholeNumber": "Masukkan jumlah bilangan bulat.",
+    "stockInPositive": "Jumlah stok masuk harus positif.",
+    "noStockChange": "Ini tidak mengubah stok saat ini.",
+    "emptyOrder": "Tambahkan minimal satu barang ke pesanan."
+  }
+}
