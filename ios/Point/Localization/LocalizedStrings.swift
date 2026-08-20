@@ -15,6 +15,8 @@ struct LocalizedStrings: Codable {
     let transactionDetail: TransactionDetailStrings
     let settings: SettingsStrings
     let errors: ErrorStrings
+    let confirmSale: ConfirmSaleStrings
+    let receipt: ReceiptStrings
 }
 
 struct TabsStrings: Codable {
@@ -130,6 +132,11 @@ struct SettingsStrings: Codable {
     let navigationTitle: String
     let languageSection: String
     let languageFooter: String
+    let printerSection: String
+    let printerNotConfigured: String
+    let selectPrinterAction: String
+    let removePrinterAction: String
+    let printerFooter: String
 }
 
 struct ErrorStrings: Codable {
@@ -138,4 +145,18 @@ struct ErrorStrings: Codable {
     let stockInPositive: String
     let noStockChange: String
     let emptyOrder: String
+}
+
+struct ConfirmSaleStrings: Codable {
+    let title: String
+    let message: String
+    let saveAction: String
+    let saveAndPrintAction: String
+    let cancelAction: String
+}
+
+struct ReceiptStrings: Codable {
+    let title: String
+    let footerThankYou: String
+    let printJobName: String
 }

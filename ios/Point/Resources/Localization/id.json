@@ -102,7 +102,12 @@
   "settings": {
     "navigationTitle": "Pengaturan",
     "languageSection": "Bahasa",
-    "languageFooter": "Pilih bahasa yang digunakan di seluruh aplikasi."
+    "languageFooter": "Pilih bahasa yang digunakan di seluruh aplikasi.",
+    "printerSection": "Printer",
+    "printerNotConfigured": "Belum Diatur",
+    "selectPrinterAction": "Pilih Printer",
+    "removePrinterAction": "Hapus Printer",
+    "printerFooter": "Setelah printer dipilih, struk akan langsung dicetak tanpa perlu memilih lagi."
   },
   "errors": {
     "itemNameAndPrice": "Masukkan nama dan harga jual yang valid.",
@@ -110,5 +115,17 @@
     "stockInPositive": "Jumlah stok masuk harus positif.",
     "noStockChange": "Ini tidak mengubah stok saat ini.",
     "emptyOrder": "Tambahkan minimal satu barang ke pesanan."
+  },
+  "confirmSale": {
+    "title": "Konfirmasi Penjualan",
+    "message": "Tinjau struk di bawah ini sebelum menyimpan penjualan ini.",
+    "saveAction": "Ya",
+    "saveAndPrintAction": "Ya, Cetak Struk",
+    "cancelAction": "Tidak"
+  },
+  "receipt": {
+    "title": "Struk",
+    "footerThankYou": "Terima kasih atas pembelian Anda!",
+    "printJobName": "Struk Point"
   }
 }

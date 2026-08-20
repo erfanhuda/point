@@ -58,9 +58,9 @@ For `.opname` (physical count), the ViewModel converts the entered *counted* qua
 
 ### Localization
 
-English and Bahasa Indonesia, English default. Deliberately **not** Apple's `.strings`/String Catalog — every UI string is decoded from `Resources/Localization/en.json` / `id.json` into the `LocalizedStrings` Codable struct tree (`Models/LocalizedStrings.swift`), so string keys are compile-time-checked Swift properties (`localization.strings.items.emptyTitle`) rather than free-floating string literals. Adding a new UI string means adding the field to the matching struct **and** both JSON files — the app will `fatalError` at launch if a JSON file doesn't decode, by design (a missing/misspelled key should fail loudly in development, not silently fall back to English).
+English and Bahasa Indonesia, English default. Deliberately **not** Apple's `.strings`/String Catalog — every UI string is decoded from `Resources/Localization/en.json` / `id.json` into the `LocalizedStrings` Codable struct tree (`Localization/LocalizedStrings.swift`), so string keys are compile-time-checked Swift properties (`localization.strings.items.emptyTitle`) rather than free-floating string literals. Adding a new UI string means adding the field to the matching struct **and** both JSON files — the app will `fatalError` at launch if a JSON file doesn't decode, by design (a missing/misspelled key should fail loudly in development, not silently fall back to English).
 
-`Utilities/LocalizationManager.swift` is a `@MainActor` `ObservableObject` singleton (`LocalizationManager.shared`) that loads the right JSON, persists the choice in `UserDefaults`, and publishes both `language` and `strings`. It's used two ways:
+`Localization/LocalizationManager.swift` is a `@MainActor` `ObservableObject` singleton (`LocalizationManager.shared`) that loads the right JSON, persists the choice in `UserDefaults`, and publishes both `language` and `strings`. It's used two ways:
 - **Views** hold it as `@EnvironmentObject` (injected once in `PointApp`) so switching languages in `Views/Settings/SettingsView.swift` re-renders every screen live.
 - **ViewModels** read `LocalizationManager.shared.strings` directly for validation-error text (e.g. `ItemFormViewModel.save()`) — they're `@MainActor` too, so this is safe, and it avoids threading an environment object through every ViewModel initializer for what's genuinely global app state.
 
@@ -69,3 +69,12 @@ English and Bahasa Indonesia, English default. Deliberately **not** Apple's `.st
 Each `AppLanguage` case's `nativeName` ("English" / "Bahasa Indonesia") is hardcoded on the enum rather than pulled from the JSON — a language naming itself isn't really "translated" content, matching how iOS's own language picker always shows each language in its own script regardless of the current UI language.
 
 Currency formatting (`Decimal.currencyFormatted`) and system date/time formatting still follow the device's actual locale, not the in-app language toggle — intentionally out of scope; this is a UI-text switch, not a full locale override.
+
+### Printing
+
+`Printing/` holds two deliberately separate classes so "which printer" and "print this one job" can each be reused independently as more print actions get added later:
+
+- **`PrinterManager`** (setup/binding) — `@MainActor` `ObservableObject` singleton (`PrinterManager.shared`), same pattern as `LocalizationManager`. Wraps `UIPrinterPickerController` (AirPrint discovery). `UIPrinter` is a bare `NSObject` in this SDK — no `Codable`, no `NSCoding`/`NSSecureCoding` — so it can't be archived directly; instead `PrinterManager` persists the printer's `url` (`String`) and `displayName` (`String`) as plain `UserDefaults` values and reconstructs the `UIPrinter` via `UIPrinter(url:)` on next launch. `Views/Settings/SettingsView.swift` is the only current UI for binding/clearing a printer.
+- **`ReceiptPrinter`** (print action) — builds the plain-text receipt body and hands it to `UIPrintInteractionController`. Checks `PrinterManager.shared.boundPrinter` first: if set, prints straight to it via `controller.print(to:completionHandler:)` with **no picker shown**; otherwise falls back to `controller.present(...)`, which shows the system print sheet (letting the user pick a printer ad hoc, same UX as before a printer was ever bound in Settings). Any future "print" call site (e.g. a reprint action on `TransactionDetailView`) should go through `ReceiptPrinter`, not reimplement `UIPrintInteractionController` setup — that's the reuse boundary this split exists for.
+
+The sale-confirmation flow (`Views/Sales/SaleConfirmationView.swift`) always calls `TransactionFormViewModel.save(_:)` before printing regardless of whether a printer is bound — printing never happens for an unsaved transaction, so a cancelled/failed print can never leave a receipt handed out for a sale that isn't actually on record.

@@ -102,7 +102,12 @@
   "settings": {
     "navigationTitle": "Settings",
     "languageSection": "Language",
-    "languageFooter": "Choose the language used throughout the app."
+    "languageFooter": "Choose the language used throughout the app.",
+    "printerSection": "Printer",
+    "printerNotConfigured": "Not Configured",
+    "selectPrinterAction": "Select Printer",
+    "removePrinterAction": "Remove Printer",
+    "printerFooter": "Once a printer is selected, receipts print directly without asking again."
   },
   "errors": {
     "itemNameAndPrice": "Enter a name and a valid sell price.",
@@ -110,5 +115,17 @@
     "stockInPositive": "Stock in quantity must be positive.",
     "noStockChange": "That doesn't change the current stock.",
     "emptyOrder": "Add at least one item to the order."
+  },
+  "confirmSale": {
+    "title": "Confirm Sale",
+    "message": "Review the receipt below before saving this sale.",
+    "saveAction": "Yes",
+    "saveAndPrintAction": "Yes, Print Receipt",
+    "cancelAction": "No"
+  },
+  "receipt": {
+    "title": "Receipt",
+    "footerThankYou": "Thank you for your purchase!",
+    "printJobName": "Point Receipt"
   }
 }

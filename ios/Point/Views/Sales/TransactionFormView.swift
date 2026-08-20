@@ -7,6 +7,8 @@ struct TransactionFormView: View {
     @Environment(\.dismiss) private var dismiss
 
     @State private var showingAddLine = false
+    @State private var draftTransaction: Transaction?
+    @State private var showingConfirmation = false
 
     init(
         itemRepository: ItemRepository,
@@ -93,10 +95,8 @@ struct TransactionFormView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button(localization.strings.common.save) {
-                        if viewModel.save() {
-                            onSaved()
-                            dismiss()
-                        }
+                        draftTransaction = viewModel.draftTransaction
+                        showingConfirmation = true
                     }
                     .disabled(!viewModel.canSave)
                 }
@@ -106,7 +106,31 @@ struct TransactionFormView: View {
                     viewModel.addLine(item: item, variant: variant, quantity: quantity)
                 }
             }
+            // Pushed onto this same NavigationStack (not a second `.sheet`) —
+            // stacking a sheet on top of a sheet made "Yes"/Cancel dismiss
+            // unreliably, since each level had its own `@Environment(\.dismiss)`
+            // and tearing down both together is a known trouble spot in
+            // SwiftUI's modal presentation chain. A single sheet with an
+            // internal push has one unambiguous dismiss path.
+            .navigationDestination(isPresented: $showingConfirmation) {
+                if let draftTransaction {
+                    SaleConfirmationView(
+                        transaction: draftTransaction,
+                        onConfirm: { completeSave(draftTransaction, thenPrint: false) },
+                        onConfirmAndPrint: { completeSave(draftTransaction, thenPrint: true) }
+                    )
+                }
+            }
         }
+    }
+
+    private func completeSave(_ transaction: Transaction, thenPrint: Bool) {
+        guard let saved = viewModel.save(transaction) else { return }
+        if thenPrint {
+            ReceiptPrinter.print(transaction: saved, strings: localization.strings)
+        }
+        onSaved()
+        dismiss()
     }
 }
 

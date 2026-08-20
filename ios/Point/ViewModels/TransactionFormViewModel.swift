@@ -54,16 +54,26 @@ final class TransactionFormViewModel: ObservableObject {
         lines.remove(atOffsets: offsets)
     }
 
+    /// A not-yet-persisted `Transaction` built from the form's current
+    /// fields — used to render the receipt preview in the save-confirmation
+    /// sheet before the user commits. Pass the exact same value back into
+    /// `save(_:)` so the previewed receipt and the persisted record match.
+    var draftTransaction: Transaction {
+        Transaction(date: date, lines: lines, discount: discount, taxEnabled: taxEnabled, taxRate: taxRate)
+    }
+
+    /// Persists `transaction` (normally `draftTransaction`, previewed by the
+    /// caller before confirming) and returns it on success, or `nil` on
+    /// failure — `errorMessage` explains why.
     @discardableResult
-    func save() -> Bool {
+    func save(_ transaction: Transaction) -> Transaction? {
         guard canSave else {
             errorMessage = LocalizationManager.shared.strings.errors.emptyOrder
-            return false
+            return nil
         }
-        let transaction = Transaction(date: date, lines: lines, discount: discount, taxEnabled: taxEnabled, taxRate: taxRate)
         do {
             try transactionRepository.save(transaction)
-            for line in lines {
+            for line in transaction.lines {
                 let movement = StockMovement(
                     itemID: line.itemID,
                     variantID: line.variantID,
@@ -75,10 +85,10 @@ final class TransactionFormViewModel: ObservableObject {
                 )
                 try stockMovementRepository.save(movement)
             }
-            return true
+            return transaction
         } catch {
             errorMessage = error.localizedDescription
-            return false
+            return nil
         }
     }
 }
